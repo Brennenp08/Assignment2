@@ -40,6 +40,11 @@ def cost_per_class(annual_cost, credits):
     return cost_per_credit(annual_cost, credits) * CS1430_CREDITS / CS1430_MEETINGS_PER_SEMESTER
 
 
+def cost_of_sleeping_in(annual_cost, credits):
+    """Give back the tuition share represented by one missed CS 1430 class."""
+    return cost_per_class(annual_cost, credits)
+
+
 # ---- PROGRAM ----
 
 def main():
@@ -96,7 +101,9 @@ def main():
             amount = cost_per_class(annual_cost, credits)
             print(f"Cost per CS 1430 class: ${amount:.2f}")
         elif choice == "6":
-            print("Complete the Worth It? extension using the Canvas assignment guide.")
+            amount = cost_of_sleeping_in(annual_cost, credits)
+            print(f"Each sleep-in (one missed CS 1430 class) costs about ${amount:.2f} in tuition.")
+            print("This is tuition you have already paid, not an extra charge.")
         else:
             print("Please choose 1 through 6, or Q to quit.")
 
