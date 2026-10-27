@@ -43,8 +43,27 @@ def cost_per_class(annual_cost, credits):
 # ---- PROGRAM ----
 
 def main():
-    annual_cost = float(input("Enter the total cost for one year: $"))
-    credits = int(input("Enter the number of credits this semester: "))
+    while True:
+        try:
+            annual_cost = float(input("Enter the total cost for one year: $"))
+        except ValueError:
+            print("Please enter the yearly cost as a number.")
+            continue
+        if annual_cost < 0:
+            print("The yearly cost cannot be negative.")
+            continue
+        break
+
+    while True:
+        try:
+            credits = int(input("Enter the number of credits this semester: "))
+        except ValueError:
+            print("Please enter the credits as a whole number.")
+            continue
+        if credits <= 0:
+            print("Credits must be greater than zero.")
+            continue
+        break
 
     while True:
         print("\nCost of College")
